@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite Marat Aksanov and the original online tool."
+type: software
+title: "Ad Report Auditor"
+authors:
+  - family-names: "Aksanov"
+    given-names: "Marat"
+    website: "https://aksanov.digital"
+url: "https://aksanov.digital/tools/advertising/ad-report-auditor"
+repository-code: "https://github.com/aksanovdgtl-cmyk/ad-report-auditor"
+license: MIT
+abstract: "Analyze advertising report exports locally in the browser. Review KPI, spend without conversions and tracking signals for Google Ads, Meta Ads, Yandex Direct and Telegram Ads. CSV and Excel input; CSV findings export."
+keywords:
+  - "ppc"
+  - "advertising"
+  - "marketing-analytics"
+  - "csv"
+  - "excel"
+  - "javascript"

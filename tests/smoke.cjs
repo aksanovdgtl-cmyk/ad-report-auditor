@@ -1,0 +1,22 @@
+const {setup, assert, numeric} = require('./helpers.cjs');
+const XLSX = require('xlsx');
+(async()=>{
+  const t=setup();
+  t.get('ara-demo').click();t.get('ara-run').click();
+  assert.equal(t.get('ara-results').hidden,false);
+  assert.equal(numeric(t.get('ara-kpis').children[0].querySelector('strong').textContent),5100);
+  t.get('ara-download').click();assert.equal(t.downloads.length,1);
+  t.get('ara-reset').click();
+  await t.upload('ara-file','Campaign;Cost;Impressions;Clicks;Conversions;Revenue\n"Test; quoted";120;1000;10;2;400');
+  assert.equal(t.get('ara-run').disabled,false);t.get('ara-run').click();
+  assert.equal(numeric(t.get('ara-kpis').children[0].querySelector('strong').textContent),120);
+  assert.equal(numeric(t.get('ara-kpis').children[3].querySelector('strong').textContent),60);
+  t.get('ara-reset').click();
+  const workbook=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook,XLSX.utils.json_to_sheet([{Campaign:'XLSX synthetic',Cost:200,Impressions:1000,Clicks:20,Conversions:4,Revenue:800}]),'Report');
+  await t.upload('ara-file',XLSX.write(workbook,{bookType:'xlsx',type:'buffer'}),'synthetic.xlsx');
+  assert.equal(t.get('ara-run').disabled,false);t.get('ara-run').click();
+  assert.equal(numeric(t.get('ara-kpis').children[0].querySelector('strong').textContent),200);
+  assert.equal(numeric(t.get('ara-kpis').children[3].querySelector('strong').textContent),50);
+  t.finish();console.log('PASS demo totals, CSV export, quoted CSV and Excel import, CPA arithmetic');
+})().catch(err=>{console.error(err);process.exitCode=1;});

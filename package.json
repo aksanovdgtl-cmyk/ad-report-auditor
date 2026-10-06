@@ -1,0 +1,31 @@
+{
+  "name": "ad-report-auditor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Client-side CSV and Excel ad report audit: KPI, wasted spend and tracking checks. By Marat Aksanov.",
+  "author": {
+    "name": "Marat Aksanov",
+    "url": "https://aksanov.digital"
+  },
+  "license": "MIT",
+  "homepage": "https://aksanov.digital/tools/advertising/ad-report-auditor",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aksanovdgtl-cmyk/ad-report-auditor.git"
+  },
+  "keywords": [
+    "ppc",
+    "advertising",
+    "marketing-analytics",
+    "csv",
+    "excel",
+    "javascript"
+  ],
+  "scripts": {
+    "test": "node tests/smoke.cjs"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  }
+}
